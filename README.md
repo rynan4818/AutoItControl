@@ -1,0 +1,2 @@
+# AutoItControl
+BeatSaberでAutoItを使って外部ソフトをコントロールする
