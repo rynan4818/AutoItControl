@@ -19,7 +19,7 @@ BeatSaberで[AutoIt](https://www.autoitscript.com/site/autoit/)を使って外�
 ![image](https://user-images.githubusercontent.com/14249877/173230744-45c5503b-56ec-41c6-9c96-758be11a92d6.png)
 
 下記スクリプトを作成すると
-- 譜面スタート時に曲時間が5.5秒で`VirtualMotionCapture`というタイトルで始まるウィンドウをアクティブ（前面にする）
+- 譜面スタート時に`VirtualMotionCapture`というタイトルで始まるウィンドウをアクティブ（前面にする）
 - 曲時間5.5秒の時にキーボードで`1`を送信
 - 曲時間6.5秒の時にキーボードで`2`を送信
 - 曲時間7.5秒の時にキーボードで`3`を送信
