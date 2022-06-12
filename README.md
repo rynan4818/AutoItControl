@@ -60,6 +60,8 @@ BeatSaberで[AutoIt](https://www.autoitscript.com/site/autoit/)を使って外�
 
 上の例では適当に1,2,3,4とかにしましたが、あまり影響の無いショートカットキーに設定することをおすすめします。
 
+JSONフォーマットのチェックには、[JSONきれい](https://tools.m-bsys.com/development_tooles/json-beautifier.php)とか整形＆チェックしてくれるサイトも多いので、事前チェックされることをオススメします。
+
 ## JSONの説明
 
 - **WinActivate** : 譜面のスタート時にこの名前で始まるタイトルのウィンドウをアクティブ（前面）にします。
