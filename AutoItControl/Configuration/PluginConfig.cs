@@ -1,4 +1,4 @@
-﻿/*
+﻿using System.IO;
 using System.Runtime.CompilerServices;
 using IPA.Config.Stores;
 
@@ -8,31 +8,55 @@ namespace AutoItControl.Configuration
     internal class PluginConfig
     {
         public static PluginConfig Instance { get; set; }
-        public virtual int IntValue { get; set; } = 42; // Must be 'virtual' if you want BSIPA to detect a value change and save the config automatically.
+        /// <summary>
+        /// デフォルトのAutoItスクリプトファイルパスです。
+        /// </summary>
+        public static readonly string DefaultScriptPath = Path.Combine(IPA.Utilities.UnityGame.UserDataPath, "AutoItControl", "DefaultAutoIt.json");
+
+        // BSIPAが値の変更を検出し、自動的に設定を保存したい場合は、'virtual'でなければなりません。
 
         /// <summary>
-        /// This is called whenever BSIPA reads the config from disk (including when file changes are detected).
+        /// AutoItスクリプトのファイルパス
+        /// </summary>
+        public virtual string autoItScriptPath { get; set; } = DefaultScriptPath;
+
+        /// <summary>
+        /// 曲専用AutoItスクリプトの有効・無効
+        /// </summary>
+        public virtual bool songSpecificScript { get; set; } = true;
+
+        /// <summary>
+        /// キーストローク中のキーを押してから離すまでの時間を変更します。単位は[ミリ秒]
+        /// </summary>
+        public virtual int sendKeyDownDelay { get; set; } = 50;
+
+        /// <summary>
+        /// ウィンドウ関連関数成功後の停止時間を変更します。単位は[ミリ秒]
+        /// </summary>
+        public virtual int winWaitDelay { get; set; } = 50;
+
+        /// <summary>
+        /// これは、BSIPAが設定ファイルを読み込むたびに（ファイルの変更が検出されたときを含めて）呼び出されます。
         /// </summary>
         public virtual void OnReload()
         {
-            // Do stuff after config is read from disk.
+            // 設定ファイルを読み込んだ後の処理を行う。
         }
 
         /// <summary>
-        /// Call this to force BSIPA to update the config file. This is also called by BSIPA if it detects the file was modified.
+        /// これを呼び出すと、BSIPAに設定ファイルの更新を強制します。 これは、ファイルが変更されたことをBSIPAが検出した場合にも呼び出されます。
         /// </summary>
         public virtual void Changed()
         {
-            // Do stuff when the config is changed.
+            // 設定が変更されたときに何かをします。
         }
 
         /// <summary>
-        /// Call this to have BSIPA copy the values from <paramref name="other"/> into this config.
+        /// これを呼び出して、BSIPAに値を<paramref name ="other"/>からこの構成にコピーさせます。
         /// </summary>
         public virtual void CopyFrom(PluginConfig other)
         {
-            // This instance's members populated from other
+            // このインスタンスのメンバーは他から移入されました
         }
     }
 }
-*/
