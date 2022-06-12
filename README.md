@@ -16,7 +16,7 @@ BeatSaberで[AutoIt](https://www.autoitscript.com/site/autoit/)を使って外�
 
 例として、こんな感じでショートカットキーで表情を設定した場合。
 
-
+![image](https://user-images.githubusercontent.com/14249877/173230744-45c5503b-56ec-41c6-9c96-758be11a92d6.png)
 
 下記スクリプトを作成すると
 - 譜面スタート時に曲時間が5.5秒で`VirtualMotionCapture`というタイトルで始まるウィンドウをアクティブ（前面にする）
@@ -57,6 +57,8 @@ BeatSaberで[AutoIt](https://www.autoitscript.com/site/autoit/)を使って外�
 		    }
 		  ]
 		}
+
+上の例では適当に1,2,3,4とかにしましたが、あまり影響の無いショートカットキーに設定することをおすすめします。
 
 ## JSONの説明
 
