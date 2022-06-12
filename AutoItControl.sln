@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoItControl", "AutoItControl\AutoItControl.csproj", "{9E1A9A23-A43A-4052-9EB8-AC067C99A72D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E1A9A23-A43A-4052-9EB8-AC067C99A72D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E1A9A23-A43A-4052-9EB8-AC067C99A72D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E1A9A23-A43A-4052-9EB8-AC067C99A72D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E1A9A23-A43A-4052-9EB8-AC067C99A72D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {257E2653-6744-4619-B418-F61B6B15436E}
+	EndGlobalSection
+EndGlobal
