@@ -116,6 +116,8 @@ OBS Studioを例に説明します。
 
 そうすると、下の画像の様なツールが開きますので、Finder Toolの丸い的マークをマウスドラッグでcontrolIDを調べたい対象のソフト(この場合はOBS)の適当な場所に持っていくと、色々情報が取得できます。この時にAutoIt InfoツールのControlタブのAdvanced Modeの項目が表示されれば、そのソフトはControlSendを使えます。
 
+![image](https://user-images.githubusercontent.com/14249877/173356081-01539e16-d165-4b23-bc43-9f21725bbc18.png)
+
 Advanced Modeをダブルクリックすると内容がコピーできますので、コピーします。
 
 コピーできたら、JSONのTimeScriptを以下の様に設定します。
@@ -145,6 +147,6 @@ ControlSendコマンドは、対象のウィンドウのTitleやcontrolIDを指�
 
 これは、このソフトでAutoItControlの動作を模擬してくれます。使いたいコマンドにチェックを入れて内容を入力してRUNを押すと、キーボード送信動作を模擬してくれます。スクリプト作成前に事前確認を行うのに便利だと思います。
 
-
+![image](https://user-images.githubusercontent.com/14249877/173356107-d1df09f7-41ec-4236-8f3b-a052b8c2b507.png)
 
 SendコマンドとControlSendコマンドはTimeScript上で混在して使用可能です。
