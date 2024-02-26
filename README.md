@@ -88,13 +88,12 @@ JSONフォーマットのチェックには、[JSONきれい](https://tools.m-bs
 - **TimeScript** : 曲時間ごとに送信するキーのリストを配列にします。
 - **SongTime** : キー送信したい曲時間(秒)です。
     - 現状は00:50 のような表記に対応していませんので1:10.5の場合は70.5と指定して下さい。
-- **Send** : AutoItの[Send関数](https://www.autoitscript.com/autoit3/docs/functions/Send.htm) を使用します。
+- **Send** : AutoItの[Send](https://www.autoitscript.com/autoit3/docs/functions/Send.htm) 関数を使用します。
     - パラメータをJSONオブジェクトで指定します。
-    - 
-- **keys** : Send関数のkeysパラメータに相当します。
+- **keys** : Send関数のkeysパラメータです。
     - 入力した内容がキーとして送信されます。CTRLやSHIFTなどを押しながらは特殊文字で指定します。
     - 例:CTRL+ALT+a → "^!a"
-- **flag** : Send関数のflagパラメータに相当します。
+- **flag** : Send関数のflagパラメータです。
     - "1"を指定すると、`!` `+` `^` `#` `{` `}`などのAutoIt用の特殊文字をそのまま送信したい場合に指定します。
     - 項目がない場合はデフォルト値"0"になります。flagはあまり使わないと思います。
 
@@ -104,17 +103,17 @@ ControlSendは、AutoItの[ControlSend](https://www.autoitscript.com/autoit3/doc
 
 ※[ControlSend関数の日本語訳(但し古いので注意)](https://open-shelf.appspot.com/AutoIt3.3.6.1j/html/functions/ControlSend.htm)
 
-これは、ウィンドウのアクティブ状態は関係なく、指定したウィンドウの指定したコントロール（テキストボックスとか）に狙い撃ちでキーボード送信します。そのため、他のソフトが誤作動する危険性が無く、信頼性の高い制御方法になります。但し、そのためにはcontrolIDと呼ぶ固有のIDを調べる必要があります。
+これは、ウィンドウのアクティブ状態は関係なく、指定したウィンドウの指定したコントロール（テキストボックスとか）に狙い撃ちでキーボード送信します。そのため、他のソフトが誤作動する危険性が無く、信頼性の高い制御方法になります。だだし、そのためにはcontrolIDと呼ぶ固有のIDを調べる必要があります。
 
-ただし、ControlSendはUnityで作られれたバーチャルモーションキャプチャーなどは制御できませんので、その場合はSendコマンドを使用して下さい。
+なお、ControlSendはUnityで作られれたバーチャルモーションキャプチャーなどは制御できませんので、その場合はSendコマンドを使用して下さい。
 
 OBS Studioを例に説明します。
 
-[リリース](https://github.com/rynan4818/AutoItControl/releases)のAssetsにmodと一緒に`AutoItControlTEST.zip`が登録されています。こちらのツールを使って、controlIDの調査と事前テストが可能です。
+[リリース](https://github.com/rynan4818/AutoItControl/releases)のAssetsにmodと一緒に`AutoItControlTEST.zip`が登録されています。その中の`Au3Info_x64.exe`を使って、controlIDの調査と事前テストが可能です。
 
-`AutoItControlTEST.zip`を解凍すると、`Au3Info_x64.exe`が出てきますので適当な場所において実行して下さい。
+起動すると下の画像の様なツールが開きますので、Finder Toolの丸い的マークをマウスドラッグでcontrolIDを調べたい対象のソフト(この場合はOBS)の適当な場所に持っていくと、色々情報が取得できます。この時にAutoIt InfoツールのControlタブのAdvanced Modeの項目が表示されれば、そのソフトはControlSendを使えます。
 
-そうすると、下の画像の様なツールが開きますので、Finder Toolの丸い的マークをマウスドラッグでcontrolIDを調べたい対象のソフト(この場合はOBS)の適当な場所に持っていくと、色々情報が取得できます。この時にAutoIt InfoツールのControlタブのAdvanced Modeの項目が表示されれば、そのソフトはControlSendを使えます。
+![image](https://user-images.githubusercontent.com/14249877/173356081-01539e16-d165-4b23-bc43-9f21725bbc18.png)
 
 Advanced Modeをダブルクリックすると内容がコピーできますので、コピーします。
 
@@ -131,20 +130,23 @@ Advanced Modeをダブルクリックすると内容がコピーできますの�
 
 ### ControlSendコマンドのJSONの説明
 
-- **title** は、ウィンドウのタイトルで、AutoIt Infoツールで表示されたTitle欄がそうです。前方一致なのでバージョンまで含めると将来的に動かなくなりそうなので、"OBS"だけにします。
+- **ControlSend** : AutoItの[ControlSend](https://www.autoitscript.com/autoit3/docs/functions/ControlSend.htm)関数を使用します。
+    - パラメータをJSONオブジェクトで指定します。
+- **title** : ControlSend関数のtitleパラメータです。
+    - titleはウィンドウのタイトルで、AutoIt Infoツールで表示されたTitle欄がそうです。前方一致なのでバージョンまで含めると将来的に動かなくなりそうなので"OBS"だけにします。
+- **controlID** : ControlSend関数のcontrolIDパラメータです。
+    - controlIDは、先程調べたAdvanced Modeの内容ですが、コピーした内容は`[CLASS:Qt5152QWindowIcon; INSTANCE:2]`の様になっていたと思います。今回はOBSのショートカットキー設定を使う予定なので、制御対象がウィンドウであれば良いため`; INSTANCE:2`の部分は削除しています。
+- **string** : ControlSend関数のstringパラメータです。
+    - stringは、送信するキーボードの内容です。SendコマンドのKeysと同じです。
+- **text** : ControlSend関数のtextパラメータです。
+    - 例:`"text": "obs64"` 上記例では指定していませんが、textパラメータも指定可能です。対象ウィンドウをTitleだけでは絞り込めない場合に指定して下さい。
+- **flag** : ControlSend関数のflagパラメータです。
+    - 例:`"flag": "1"` 上記例では指定していませんが、Send関数のflagと同じ意味です。
 
-- **controlID** は、先程調べたAdvanced Modeの内容ですが、コピーした内容は`[CLASS:Qt5152QWindowIcon; INSTANCE:2]`の様になっていたと思います。今回はOBSのショートカットキー設定を使う予定なので、制御対象がウィンドウであれば良いため`; INSTANCE:2`の部分は削除しています。
-
-- **string** は、送信するキーボードの内容です。SendコマンドのKeysと同じです。
-
-- **text** 例:`"text": "obs64"` 上記例はで指定していませんが、textパラメータも指定可能です。対象ウィンドウをTitleだけでは絞り込めない場合に指定して下さい。
-
-- **flag** 例:`"flag": "1"` 上記例では指定していませんが、Send関数のflagと同じ意味です。
+※SendコマンドとControlSendコマンドはTimeScript上で混在して使用可能です。
 
 ControlSendコマンドは、対象のウィンドウのTitleやcontrolIDを指定するため、正しく動作するか事前確認を行いたいと思います。そのため、`AutoItControlTEST.zip`に同封してあった`AutoItControlTEST.exe`が役立ちます。
 
-これは、このソフトでAutoItControlの動作を模擬してくれます。使いたいコマンドにチェックを入れて内容を入力してRUNを押すと、キーボード送信動作を模擬してくれます。スクリプト作成前に事前確認を行うのに便利だと思います。
+AutoItControlTESTを使うとAutoItControlの動作を模擬してくれます。使いたいコマンドにチェックを入れて内容を入力してRUNを押すと、キーボード送信動作をしてくれます。スクリプト作成前に事前確認を行うのに便利だと思います。
 
-
-
-SendコマンドとControlSendコマンドはTimeScript上で混在して使用可能です。
+![image](https://user-images.githubusercontent.com/14249877/173356107-d1df09f7-41ec-4236-8f3b-a052b8c2b507.png)
