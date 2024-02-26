@@ -7,7 +7,7 @@ namespace AutoItControl.Installers
     {
         public override void InstallBindings()
         {
-            this.Container.BindInterfacesAndSelfTo<AutoItController>().FromNewComponentOnNewGameObject().AsCached().NonLazy();
+            this.Container.BindInterfacesAndSelfTo<AutoItController>().AsCached().NonLazy();
         }
     }
 }

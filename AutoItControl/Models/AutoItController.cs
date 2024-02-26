@@ -3,7 +3,6 @@ using AutoItControl.Configuration;
 using AutoIt;
 using System;
 using System.Threading;
-using UnityEngine;
 using Zenject;
 
 namespace AutoItControl.Models
@@ -13,15 +12,14 @@ namespace AutoItControl.Models
     /// For a full list of Messages a Monobehaviour can receive from the game, see https://docs.unity3d.com/ScriptReference/MonoBehaviour.html.
     /// </summary>
 
-    public class AutoItController : MonoBehaviour, IInitializable, IDisposable
+    public class AutoItController : IInitializable, IDisposable
     {
         private bool _disposedValue;
         private IAudioTimeSource _audioTimeSource;
         private AutoItData _data;
         private Thread _thread;
 
-        [Inject]
-        private void Constractor(IAudioTimeSource audioTimeSource, AutoItData _data)
+        public AutoItController(IAudioTimeSource audioTimeSource, AutoItData _data)
         {
             this._audioTimeSource = audioTimeSource;
             this._data = _data;
