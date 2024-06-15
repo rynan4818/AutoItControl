@@ -27,8 +27,8 @@ namespace AutoItControl.Models
         public void Initialize()
         {
             var scriptCheck = false;
-            if (PluginConfig.Instance.songSpecificScript && CustomPreviewBeatmapLevelPatch.customLevelPath != String.Empty)
-                scriptCheck = _data.LoadAutoItData(CustomPreviewBeatmapLevelPatch.customLevelPath);
+            if (PluginConfig.Instance.songSpecificScript && SongTimeEventScriptBeatmapPatch.customLevelPath != String.Empty)
+                scriptCheck = _data.LoadAutoItData(SongTimeEventScriptBeatmapPatch.customLevelPath);
             else
                 scriptCheck = _data.LoadAutoItData();
             if (!scriptCheck)
